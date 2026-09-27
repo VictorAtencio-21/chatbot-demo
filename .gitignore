@@ -1,0 +1,13 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# data (local prototype storage)
+data/
+
+# misc
+.DS_Store
+*.local

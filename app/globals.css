@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-amber-50 text-stone-800 antialiased;
+}
+
+/* ---- chat widget animations ---- */
+@keyframes gc-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.gc-msg-in {
+  animation: gc-fade-up 0.25s ease-out;
+}
+
+@keyframes gc-typing {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+.gc-typing-dot {
+  animation: gc-typing 1.2s infinite;
+}
+.gc-typing-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.gc-typing-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes gc-badge-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+.gc-badge-pulse {
+  animation: gc-badge-pulse 2.2s infinite ease-in-out;
+}
+
+/* Ensure embedded widget page canvas is 100% transparent */
+html.gc-widget-frame,
+body.gc-widget-frame,
+html:has(#gc-widget-root),
+body:has(#gc-widget-root) {
+  background: transparent !important;
+  background-color: transparent !important;
+}
